@@ -1,0 +1,20 @@
+{
+  "name": "asalreviews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bson-ext": "^4.0.2",
+    "bunyan": "^1.8.15",
+    "cors": "^2.8.5",
+    "express": "^4.16.3",
+    "express-validator": "^5.3.1",
+    "helmet": "^5.0.2",
+    "mongoose": "^5.8.3"
+  }
+}
