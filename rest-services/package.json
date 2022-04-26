@@ -11,10 +11,14 @@
   "dependencies": {
     "bson-ext": "^4.0.2",
     "bunyan": "^1.8.15",
+    "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
     "express": "^4.16.3",
     "express-validator": "^5.3.1",
     "helmet": "^5.0.2",
-    "mongoose": "^5.8.3"
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.3",
+    "nanoid": "^3.3.3"
   }
 }
