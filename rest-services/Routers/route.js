@@ -1,8 +1,10 @@
-const express = require('express'),
-    route = new express.Router(),
-    reviewController = require('../Controller/reviews');
+const express = require("express"),
+  route = new express.Router(),
+  reviewController = require("../Controller/reviews"),
+  userController = require("../Controller/users");
 
-route.post('/user/createReview', reviewController.createReview)
-route.post('/user/getReview', reviewController.getReviews)
+route.post("/user/createReview", reviewController.createReview);
+route.post("/user/getReview", reviewController.getReviews);
+route.get("/user/getUser/:id", userController.getUser);
 
-module.exports = route
+module.exports = route;
