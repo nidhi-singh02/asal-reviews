@@ -5,6 +5,7 @@ const express = require("express"),
 
 route.post("/user/createReview", reviewController.createReview);
 route.post("/user/getReview", reviewController.getReviews);
+route.get("user/upvote/:id", reviewController.upvote);
 route.get("/user/getUser/:id", userController.getUser);
 
 module.exports = route;
