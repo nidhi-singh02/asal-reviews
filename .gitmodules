@@ -1,0 +1,3 @@
+[submodule "asal-reviews-api"]
+	path = asal-reviews-api
+	url = https://github.com/saurabhsingh121/asal-reviews-api
