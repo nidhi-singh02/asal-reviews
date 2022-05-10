@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const ReviewSchema = new mongoose.Schema({
   reviewId: {
-    type: Number,
+    type: String,
   },
   UserId: {
-    type: Number,
+    type: String,
   },
   content: {
     type: String,

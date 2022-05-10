@@ -7,7 +7,7 @@ const path = require('path');
 var invoke = async function (channelID, chaincode, functionName, functionArgs) {
     try {
         // load the network configuration
-        const ccpPath = path.resolve(__dirname, '..', 'connection-org1.json');
+        const ccpPath = path.resolve(__dirname, '..', 'rest-generate-user','connection-org1.json');
 
         let ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
 
@@ -32,13 +32,14 @@ var invoke = async function (channelID, chaincode, functionName, functionArgs) {
         const network = await gateway.getNetwork(channelID);
 
         // Get the contract from the network.
-        const contract = network.getContract(chaincode, );
+        const contract = network.getContract(chaincode);
 
         // Submit the specified transaction.
         let response;
         if (functionName == "RecordEmission") {
-            response = await contract.submitTransaction(functionName, functionArgs.userID, functionArgs.amount);
+            response = await contract.submitTransaction(functionName, functionArgs.productID, functionArgs.productName,functionArgs.companyName, functionArgs.sectorType,functionArgs.financialYear,functionArgs.CO2, functionArgs.CH4, functionArgs.N20, functionArgs.HFC, functionArgs.SF6, functionArgs.PFC, functionArgs.Nf3, functionArgs.Bill, functionArgs.Electricity, functionArgs.Emission, functionArgs.Activity,functionArgs.Scope3Emission,"reliance.com","reliance.com",functionArgs.cts,functionArgs.uts,"");
         }
+
         else {
             response = await contract.submitTransaction(functionName, functionArgs);
         }
@@ -57,6 +58,6 @@ var invoke = async function (channelID, chaincode, functionName, functionArgs) {
 }
 
 module.exports = {
-    invoke: invoke
+    invokeSDK: invoke
 
 }

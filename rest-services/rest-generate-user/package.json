@@ -1,0 +1,27 @@
+{
+    "name": "festival-restapi",
+    "version": "1.0.0",
+    "description": "Festival application",
+    "engines": {
+        "node": ">=8",
+        "npm": ">=5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/username/repository.git"
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "pretest": "npm run lint"
+    },
+    "engineStrict": true,
+    "author": "Nidhi Singh",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "fabric-ca-client": "^2.2.6",
+        "fabric-network": "^2.2.11"
+    },
+    "devDependencies": {
+        "eslint": "^5.9.0"
+    }
+}
