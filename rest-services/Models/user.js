@@ -4,7 +4,7 @@ const { Password } = require("../Services/password");
 const UserSchema = new mongoose.Schema(
   {
     UserId: {
-      type: Number,
+      type: String,
     },
     UserName: {
       type: String,

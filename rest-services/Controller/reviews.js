@@ -2,9 +2,10 @@ const appLogger = require("../Services/appLogger"),
   database = require("../Services/dbconnect"),
   validator = require("../Utils/validator"),
   reviewModel = require("../Models/review");
-//invoke = require('../invoke'),
-//query = require('../query'),
-(channelID = "review"), (chaincodeID = "review");
+const invoke = require('../invoke'),
+   query = require('../query');
+(channelID = "review"), 
+(chaincodeID = "review");
 
 module.exports.createReview = async (req, res) => {
   try {
@@ -30,7 +31,9 @@ module.exports.createReview = async (req, res) => {
     let id = req.body.UserId + makeid(5);
     console.log(id, "MAKEID");
 
-    const reviewId = parseInt(id);
+   // const reviewId = parseInt(id);
+    const reviewId = id;
+
     let obj = req.body;
     obj.reviewId = reviewId;
     let reviewObj = new reviewModel(obj);
@@ -84,11 +87,12 @@ module.exports.upvote = async (req, res) => {
   try {
     console.log("######## Inside  upvote #########");
     const { id } = req.params;
+    console.log("id",id);
     const review = await reviewModel.findOne({ reviewId: id });
     // check if user has already upvoted
-    if (review.upvoteBy.includes(req.user.id)) {
-      throw new Error("User has already upvoted");
-    }
+    // if (review.upvoteBy.includes(req.user.id)) {
+    //   throw new Error("User has already upvoted");
+    // }
     review.upvotes += 1;
     review.upvoteBy.push(req.user.id);
     const result = await review.save();

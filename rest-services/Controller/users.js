@@ -33,6 +33,7 @@ module.exports.signup = async (req, res) => {
     }
     const { name, contactNo, email, password } = req.body;
     const existingUser = userModel.findOne({ Email: email });
+    console.log("existingUser",existingUser)
     if (existingUser) {
       throw new Error("Email in use");
     }
