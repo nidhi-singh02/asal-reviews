@@ -1,18 +1,18 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div style="text-align: center">
+  <h1>Welcome to {{ title }}!</h1>
 </div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- 
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<!--
 <div class="navbar">
-  <div class="row"> 
-    <div class="col-md-6 col-sm-6 col-lg-6"> 
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-lg-6">
       <img src="../assets/image/AsalReview.png" height="34" width="138" alt="logo">
     </div>
-    <div class="col-md-6 col-sm-6 col-lg-6 floatR"> 
+    <div class="col-md-6 col-sm-6 col-lg-6 floatR">
   <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
   <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
   <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
@@ -21,46 +21,93 @@
 </div>
 </div> -->
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img
+      alt="logo"
+      height="100"
+      src="../assets/image/AsalReviews_1.png"
+      width="160"
+    />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div class="navbar row">
-  <div class="ol-md-12 col-sm-12 col-lg-12"><img alt="logo" height="100" src="../assets/image/AsalReviews_1.png" width="160">
-    <div class="col-md-6 col-sm-6 col-lg-6 floatR">
-      <ul id="nav">
-        <li> <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Why AsalReview</a></li>
-        <li>
-          <a href="#"><i class="fa fa-fw fa-search"></i> Reviews</a>
-          <ul>
-            <li><a routerLink="/writeReview">Write Reviews</a></li>
-            <li><a href="#">Check Reviews</a></li>
-          </ul>
-        </li>
-        <li> <a routerLink="/login"><i class="fa fa-fw fa-envelope"></i> Login</a></li>
-        <li> <a routerLink="/signUp"><i class="fa fa-fw fa-user"></i> Create Account</a></li>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav" style="margin-left: auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-fw fa-home"></i>
+          Why AsalReview
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i class="fa fa-fw fa-search"></i>
+          Reviews
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/writeReview">Write Reviews</a>
+          <a class="dropdown-item" routerLink="/getReview">Check Reviews</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <ng-container *ngIf="!loggedIn">
+          <a class="nav-link" routerLink="/login">
+            <i class="fa fa-fw fa-envelope"></i>
+            Login
+          </a>
+        </ng-container>
+        <ng-container *ngIf="loggedIn">
+          <a class="nav-link" (click)="logout()" href="javascript:void(0)">
+            <i class="fa fa-fw fa-envelope"></i>
+            Logout
+          </a>
+        </ng-container>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/signUp">
+          <i class="fa fa-fw fa-user"></i>
+          Create Account
+        </a>
+      </li>
+    </ul>
 
-      </ul>
-
-
-      <!-- <ul id="nav">
-        <li><a href="#">Why AsalReview</a></li>
-        <li><a href="#">Features</a>
-          <ul>
-            <li><a href="#">Service Reviews</a></li>
-            <li><a href="#">Product Reviews</a></li>
-            </ul>
-            </li>
+    <!-- <ul id="nav">
+          <li><a href="#">Why AsalReview</a></li>
+          <li><a href="#">Features</a>
             <ul>
-              <li><a href="#">Login</a>
-              <li><a href="#">Create Account</a>
-            </ul>
-        </li>
-      </ul> -->
-      <!-- </li>
-      </ul> -->
-
-    </div>
+              <li><a href="#">Service Reviews</a></li>
+              <li><a href="#">Product Reviews</a></li>
+              </ul>
+              </li>
+              <ul>
+                <li><a href="#">Login</a>
+                <li><a href="#">Create Account</a>
+              </ul>
+          </li>
+        </ul> -->
+    <!-- </li>
+        </ul> -->
   </div>
+</nav>
 
-
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 
 <!-- <app-messages></app-messages> -->

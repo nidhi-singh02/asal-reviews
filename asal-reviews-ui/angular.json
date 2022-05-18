@@ -27,7 +27,12 @@
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-3.3.1.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/wow.min.js",
+              "src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {

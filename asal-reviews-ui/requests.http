@@ -1,0 +1,58 @@
+### Normal Routes
+GET https://asal-review-backend.herokuapp.com/
+
+### Create a new user
+POST https://asal-review-backend.herokuapp.com/user/signup
+#POST http://localhost:5000/user/signup
+Content-Type: application/json
+
+{
+    "email": "john@asalreviews.com",
+    "password": "Welcome@2",
+    "name": "John Doe",
+    "contactNo": "9111123321"
+}
+
+### Logout a user
+
+GET https://asal-review-backend.herokuapp.com/user/singout
+#GET https://localhost:5000/user/singout
+
+### Sigin user
+POST https://asal-review-backend.herokuapp.com/user/signin
+#POST http://localhost:5000/user/signin
+Content-Type: application/json
+
+{
+    "email": "john@asalreviews.com",
+    "password": "Welcome@2"
+}
+
+### Get user id
+GET https://asal-review-backend.herokuapp.com/user/getUser/hioJ6tswYrNb8A9BpzagR
+#GET http://localhost:5000/user/getUser/qX8BHnDUSmBnE56OZMeUL
+
+
+### Create Reviews
+POST https://asal-review-backend.herokuapp.com/user/createReview
+#POST http://localhost:5000/user/createReview
+Content-Type: application/json
+
+{
+    "rating":"4",
+    "content": "Very good",
+    "UserId": "qX8BHnDUSmBnE56OZMeUL",
+    "serviceprovider": "Apple",
+    "productName": "Macbook Pro"
+}
+
+### Get a review
+POST https://asal-review-backend.herokuapp.com/user/getReview
+#POST http://localhost:5000/user/getReview
+Content-Type: application/json
+
+{
+    "rating": 4,
+    "serviceprovider": "Apple",
+    "UserId": "qX8BHnDUSmBnE56OZMeUL"
+}

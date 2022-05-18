@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-</head>
-<body>
-
-
 <div class="container">
-  <form action="/action_page.php">
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <h2 style="text-align: center">Login with Social Media or Manually</h2>
     <div class="row">
-      <h2 style="text-align:center">Login with Social Media or Manually</h2>
-      <div class="vl">
-        <span class="vl-innertext">or</span>
-      </div>
-
       <div class="col">
         <a href="#" class="fb btn">
           <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-         </a>
+        </a>
         <a href="#" class="twitter btn">
           <i class="fa fa-twitter fa-fw"></i> Login with Twitter
         </a>
-        <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-          </i> Login with Google+
+        <a href="#" class="google btn"
+          ><i class="fa fa-google fa-fw"> </i> Login with Google+
         </a>
 
+        <button type="button" class="btn btn-primary" (click)="createAccount()">
+          Sign up
+        </button>
+      </div>
 
-        <input type="submit" value="Sign up" style="width: 13%; margin: 7% 43%; background-color: #0456aa;" (click)="onSubmit()">
+      <div class="vl">
+        <span class="vl-innertext">OR</span>
       </div>
 
       <div class="col">
@@ -36,13 +27,23 @@
           <p>Or sign in manually:</p>
         </div>
 
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
-
-        <input type="submit" style="width: 21%; margin: 7% 42%; background-color: #0456aa;" value="Forgot password?">
+        <input
+          type="text"
+          formControlName="email"
+          placeholder="Email Address"
+          required
+        />
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit" class="btn btn-info">Login</button>
+        <button type="button" (click)="forgotPassword()" class="btn btn-info">
+          Forgot password?
+        </button>
       </div>
-      
     </div>
   </form>
 </div>
@@ -57,8 +58,3 @@
     </div>
   </div>
 </div> -->
-
-
-
-</body>
-</html>
