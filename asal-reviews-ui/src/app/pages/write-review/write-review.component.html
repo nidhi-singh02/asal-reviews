@@ -1,0 +1,51 @@
+<div class="col-md-12 col-sm-12 col-lg-12">
+<form class="row" [formGroup]="form">
+  <div class="col-md-6 col-sm-6 col-lg-6">
+  <label>City</label>
+  <select formControlName="city" class="form-control">
+    <option *ngFor="let city of citieS" [value]="city.id">
+      {{ city.name }}
+    </option>
+  </select>
+</div>
+<div class="col-md-6 col-sm-6 col-lg-6">
+  <label for="FormControlPlace" class="form-label">Place Visited</label>
+  <input type="text" class="form-control" id="FormControlPlace" placeholder="Place Visited">
+</div>
+<div class="col-md-6 col-sm-6 col-lg-6">
+  <label>Service Provider</label><br>
+  <select formControlName="serviceProvider" class="form-control" (change)="checkFirstDropdown($event.target.value)">
+    <option *ngFor="let service of serviceProvider" [value]="service.id">
+      {{ service.name }}
+    </option>
+  </select>
+</div>
+<div class="col-md-6 col-sm-6 col-lg-6">
+  <label>Product List</label><br>
+  <select formControlName="product" class="form-control">
+    <option *ngFor="let product of products" [value]="product.id">
+      {{ product.product }}
+    </option>
+  </select>
+</div>
+<div class="col-md-6 col-sm-6 col-lg-6">
+  <label for="FormControlComment" class="form-label">Comment</label>
+  <textarea class="form-control" id="FormControlComment" rows="3"></textarea>
+  
+</div>
+
+<button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)"  matTooltipPosition="above">
+  <mat-icon>
+    {{showIcon(i)}}
+  </mat-icon>
+</button>
+<mat-error *ngIf="starCount == null || starCount == 0">
+  Star count is <strong>required</strong> and cannot be zero
+</mat-error>
+<p class="body-2">
+    Your rated <span class="body-2">{{rating}}</span> / <span class="body-2">{{starCount}}</span>
+</p>
+
+
+</form>
+</div>
