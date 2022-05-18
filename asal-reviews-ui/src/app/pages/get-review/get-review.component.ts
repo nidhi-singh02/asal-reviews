@@ -169,11 +169,11 @@ export const productList = [
 ];
 
 @Component({
-  selector: "app-write-review",
-  templateUrl: "./write-review.component.html",
-  styleUrls: ["./write-review.component.css"],
+  selector: "app-get-review",
+  templateUrl: "./get-review.component.html",
+  styleUrls: ["./get-review.component.css"],
 })
-export class WriteReviewComponent implements OnInit {
+export class GetReviewComponent implements OnInit {
   @Input("rating") private rating: number = 3;
   @Input("starCount") private starCount: number = 5;
   @Input("color") private color: string = "accent";
@@ -301,7 +301,7 @@ export class WriteReviewComponent implements OnInit {
     data.content = `${city}\n${place}\n${comment}`;
     console.log("data", data);
 
-    this.asalReviewAPI.createReview(data).subscribe(
+    this.asalReviewAPI.getReview(data).subscribe(
       (r) => {
         console.log("r", r);
         this.snackBar.open(r.message, "", { duration: 3000 });
