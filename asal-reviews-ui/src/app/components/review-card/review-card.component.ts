@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-review-card",
@@ -12,7 +13,15 @@ export class ReviewCardComponent implements OnInit {
     productName: string;
   };
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  goToUserReviews(userId) {
+    this.router.navigate(["/getReview"], {
+      queryParams: {
+        userId,
+      },
+    });
+  }
 }

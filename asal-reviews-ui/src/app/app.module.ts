@@ -18,6 +18,7 @@ import { MaterialModule } from "../material-module";
 import { GetReviewComponent } from "./pages/get-review/get-review.component";
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { ReviewTableComponent } from './components/review-table/review-table.component';
+import { WhyAsalComponent } from './pages/why-asal/why-asal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ReviewTableComponent } from './components/review-table/review-table.com
     GetReviewComponent,
     ReviewCardComponent,
     ReviewTableComponent,
+    WhyAsalComponent,
   ],
   imports: [
     BrowserModule,
