@@ -3,7 +3,6 @@ import { MatSnackBar } from "@angular/material";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
-import "rxjs/add/operator/filter";
 
 @Component({
   selector: "app-get-review",
@@ -47,13 +46,11 @@ export class GetReviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.queryParams
-      .filter((params) => params.order)
-      .subscribe((params) => {
-        console.log(params);
-        this.userID = params.UserId;
-      });
-    this.getUserReviews();
+    this.route.queryParams.subscribe((params) => {
+      console.log("params", params);
+      this.userID = params.userID || sessionStorage.getItem("userId");
+      this.getUserReviews();
+    });
   }
 
   setRating(rating: number) {
@@ -76,7 +73,7 @@ export class GetReviewComponent implements OnInit {
 
   getUserReviews() {
     const data = {
-      userID: this.userID || sessionStorage.getItem("userId"),
+      userID: this.userID,
     };
     this.asalReviewAPI.getReview(data).subscribe(
       (r) => {

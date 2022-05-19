@@ -5,9 +5,18 @@
   padding: 12px;
   background-color: #b3e5fc;
   margin-bottom: 16px;
+  cursor: pointer;
 }
 
-/* .review-card-rating {} */
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 9px -4px #0003;
+}
+
+.review-card-rating {
+  font-weight: 900;
+}
+
 .review-card-heading {
   font-weight: 700;
 }

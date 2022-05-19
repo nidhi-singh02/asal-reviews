@@ -1,9 +1,5 @@
-<button
-  mat-icon-button
-  [color]="color"
-  *ngFor="let number of [0, 1, 2, 3, 4]; index as i"
->
-  <mat-icon>
+<span *ngFor="let number of [0, 1, 2, 3, 4]; index as i">
+  <mat-icon [ngStyle]="{ 'font-size': size, color: color }">
     {{ showIcon(i) }}
   </mat-icon>
-</button>
+</span>

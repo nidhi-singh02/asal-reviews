@@ -17,10 +17,10 @@ export class ReviewCardComponent implements OnInit {
 
   ngOnInit() {}
 
-  goToUserReviews(userId) {
+  goToUserReviews(userID) {
     this.router.navigate(["/getReview"], {
       queryParams: {
-        userId,
+        userID,
       },
     });
   }

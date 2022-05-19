@@ -1,6 +1,9 @@
 <div class="review-card" (click)="goToUserReviews(data.UserId)">
-  <div class="review-card-rating">{{ data.rating }}/5</div>
+  <!-- <div class="review-card-rating">{{ data.rating }}/5</div> -->
+  <app-rating size="medium" [rating]="data.rating"></app-rating>
   <div class="review-card-heading">{{ data.productName }}</div>
-  <!-- <div class="review-card-user">{{ data.user }}</div> -->
-  <div class="review-card-comment">{{ data.content }}</div>
+  <br />
+  &ldquo;
+  <span class="review-card-comment">{{ data.content }}</span>
+  &rdquo;
 </div>
