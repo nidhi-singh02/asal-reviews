@@ -19,6 +19,7 @@ import { GetReviewComponent } from "./pages/get-review/get-review.component";
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { ReviewTableComponent } from './components/review-table/review-table.component';
 import { WhyAsalComponent } from './pages/why-asal/why-asal.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { WhyAsalComponent } from './pages/why-asal/why-asal.component';
     ReviewCardComponent,
     ReviewTableComponent,
     WhyAsalComponent,
+    RatingComponent,
   ],
   imports: [
     BrowserModule,

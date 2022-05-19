@@ -250,12 +250,12 @@ export class WriteReviewComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormBuilder().group({
-      country: ["", [Validators.required]],
+      country: [""],
       city: ["", [Validators.required]],
       serviceprovider: ["", [Validators.required]],
       productType: ["", [Validators.required]],
       comment: ["", [Validators.required]],
-      productName: ["", [Validators.required]],
+      product: ["", [Validators.required]],
     });
 
     console.log("a " + this.starCount);
@@ -299,12 +299,13 @@ export class WriteReviewComponent implements OnInit {
       return;
     }
 
-    const { city, place, comment } = this.form.value;
+    const { comment } = this.form.value;
 
     const data = this.form.value;
     data.rating = this.rating;
-    data.UserId = sessionStorage.getItem("userId");
+    data.userID = sessionStorage.getItem("userId");
     data.content = comment;
+
     console.log("data", data);
 
     this.asalReviewAPI.createReview(data).subscribe(

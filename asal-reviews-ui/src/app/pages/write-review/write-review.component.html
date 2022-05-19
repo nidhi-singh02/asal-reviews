@@ -83,7 +83,7 @@
         <input
           type="text"
           class="form-control"
-          formControlName="productName"
+          formControlName="product"
           id="FormControlServiceAvailed"
           placeholder="Service Availed"
           required
@@ -91,8 +91,7 @@
         <small
           class="form-error"
           *ngIf="
-            f.productName.errors?.required &&
-            (f.productName.touched || f.productName.dirty)
+            f.product.errors?.required && (f.product.touched || f.product.dirty)
           "
         >
           This field is required

@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
           this.getUserDetail(r.user.id);
           this.eventBroadcastService.emit({ name: "LOGIN_CHECK" });
           this.snackBar.open("Login Success", "", { duration: 5000 });
-
           this.router.navigateByUrl("/");
         } else {
           this.snackBar.open(r.message, "", { duration: 5000 });
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         console.log("err", err);
-        this.snackBar.open("Login failed");
+        this.snackBar.open(err.error.message, "", { duration: 5000 });
       }
     );
   }

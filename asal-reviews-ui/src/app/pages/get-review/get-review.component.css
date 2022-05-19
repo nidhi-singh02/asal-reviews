@@ -1,15 +1,18 @@
-.example-form {
-  min-width: 100%;
-  max-width: 500px;
+.review-card-large {
+  box-shadow: -3px 3px 2px 0px #0003;
+  padding: 16px;
+  background-color: white;
   width: 100%;
 }
 
-.example-full-width {
-  /* width: 100%; */
-  background-color: #f1efef ;
-  border-bottom: 1px solid #c3bebe ;
-  border-radius: 2px ;
-  width: 23%;
-  margin: 1%;
+/* .review-card-large-rating {
+  float: right;
+} */
+
+.review-card-large-service-provider {
+  font-weight: 700;
 }
 
+.review-card-large-product {
+  font-weight: 700;
+}
