@@ -79,12 +79,12 @@ export const productList = [
   {
     id: "5",
     cid: "book",
-    product: "Attrraction",
+    product: "Attraction",
   },
   {
     id: "6",
     cid: "skyScan",
-    product: "Filtes",
+    product: "Flights",
   },
   {
     id: "7",
@@ -104,7 +104,7 @@ export const productList = [
   {
     id: "10",
     cid: "exp",
-    product: "Flites",
+    product: "Flights",
   },
   {
     id: "11",
@@ -185,7 +185,7 @@ export class WriteReviewComponent implements OnInit {
   public writeReview: FormGroup;
   filteredOptions: Observable<string[]>;
 
-  citieS = [
+  cities = [
     {
       id: "mum",
       name: "Mumbai",
@@ -237,14 +237,7 @@ export class WriteReviewComponent implements OnInit {
 
   products = [];
 
-  form = new FormGroup({
-    country: new FormControl(),
-    city: new FormControl(),
-    serviceprovider: new FormControl(),
-    productName: new FormControl(),
-    comment: new FormControl(),
-    placeVisited: new FormControl(),
-  });
+  form: any;
 
   constructor(
     private asalReviewAPI: AsalReviewAPIService,
@@ -256,10 +249,23 @@ export class WriteReviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.form = new FormBuilder().group({
+      country: ["", [Validators.required]],
+      city: ["", [Validators.required]],
+      serviceprovider: ["", [Validators.required]],
+      productType: ["", [Validators.required]],
+      comment: ["", [Validators.required]],
+      productName: ["", [Validators.required]],
+    });
+
     console.log("a " + this.starCount);
     for (let index = 0; index < this.starCount; index++) {
       this.ratingArr.push(index);
     }
+  }
+
+  get f() {
+    return this.form.controls;
   }
 
   setRating(rating: number) {
@@ -283,7 +289,7 @@ export class WriteReviewComponent implements OnInit {
   checkFirstDropdown($event) {
     this.products = productList.filter((c) => c.cid === $event);
     let itm = this.products[0];
-    this.form.controls["productName"].setValue(itm.id);
+    this.form.controls["productType"].setValue(itm.id);
     console.log($event);
   }
 
@@ -298,7 +304,7 @@ export class WriteReviewComponent implements OnInit {
     const data = this.form.value;
     data.rating = this.rating;
     data.UserId = sessionStorage.getItem("userId");
-    data.content = `${city}\n${place}\n${comment}`;
+    data.content = comment;
     console.log("data", data);
 
     this.asalReviewAPI.createReview(data).subscribe(

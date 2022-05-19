@@ -1,50 +1,63 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col-md-6 col-sm-6 col-lg-6">
-      <label>City</label>
-      <select formControlName="city" class="form-control">
-        <option *ngFor="let city of citieS" [value]="city.id">
-          {{ city.name }}
-        </option>
-      </select>
+      <div class="form-group">
+        <label>City</label>
+        <select formControlName="city" class="form-control" required>
+          <option *ngFor="let city of cities" [value]="city.id">
+            {{ city.name }}
+          </option>
+        </select>
+        <small
+          class="form-error"
+          *ngIf="f.city.errors?.required && (f.city.touched || f.city.dirty)"
+        >
+          This field is required
+        </small>
+      </div>
 
-      <label>Service Provider</label><br />
-      <select
-        formControlName="serviceprovider"
-        class="form-control"
-        (change)="checkFirstDropdown($event.target.value)"
-      >
-        <option *ngFor="let service of serviceProvider" [value]="service.id">
-          {{ service.name }}
-        </option>
-      </select>
+      <div class="form-group">
+        <label>Service Provider</label><br />
+        <select
+          formControlName="serviceprovider"
+          class="form-control"
+          (change)="checkFirstDropdown($event.target.value)"
+          required
+        >
+          <option *ngFor="let service of serviceProvider" [value]="service.id">
+            {{ service.name }}
+          </option>
+        </select>
+        <small
+          class="form-error"
+          *ngIf="
+            f.serviceprovider.errors?.required &&
+            (f.serviceprovider.touched || f.serviceprovider.dirty)
+          "
+        >
+          This field is required
+        </small>
+      </div>
 
-      <label>Product List</label><br />
-      <select formControlName="productName" class="form-control">
-        <option *ngFor="let product of products" [value]="product.id">
-          {{ product.product }}
-        </option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label>Product List</label><br />
+        <select formControlName="productType" class="form-control" required>
+          <option *ngFor="let product of products" [value]="product.id">
+            {{ product.product }}
+          </option>
+        </select>
+        <small
+          class="form-error"
+          *ngIf="
+            f.productType.errors?.required &&
+            (f.productType.touched || f.productType.dirty)
+          "
+        >
+          This field is required
+        </small>
+      </div>
 
-    <div class="col-md-6 col-sm-6 col-lg-6">
-      <label for="FormControlPlace" class="form-label">Place Visited</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="placeVisited"
-        id="FormControlPlace"
-        placeholder="Place Visited"
-      />
-
-      <label for="FormControlComment" class="form-label">Comment</label>
-      <textarea
-        class="form-control"
-        formControlName="comment"
-        id="FormControlComment"
-        rows="3"
-      ></textarea>
-
+      <label class="body-2">Rating:</label>
       <button
         mat-icon-button
         [color]="color"
@@ -60,14 +73,52 @@
       <mat-error *ngIf="starCount == null || starCount == 0">
         Star count is <strong>required</strong> and cannot be zero
       </mat-error>
-      <p class="body-2">
-        You rated <span class="body-2">{{ rating }}</span> /
-        <span class="body-2">{{ starCount }}</span>
-      </p>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-lg-6">
+      <div class="form-group">
+        <label class="form-label">Service Availed</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="productName"
+          id="FormControlServiceAvailed"
+          placeholder="Service Availed"
+          required
+        />
+        <small
+          class="form-error"
+          *ngIf="
+            f.productName.errors?.required &&
+            (f.productName.touched || f.productName.dirty)
+          "
+        >
+          This field is required
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="FormControlComment" class="form-label">Comment</label>
+        <textarea
+          class="form-control"
+          formControlName="comment"
+          id="FormControlComment"
+          rows="4"
+          required
+        ></textarea>
+        <small
+          class="form-error"
+          *ngIf="
+            f.comment.errors?.required && (f.comment.touched || f.comment.dirty)
+          "
+        >
+          This field is required
+        </small>
+      </div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-4">
     <div class="col-md-6 col-sm-6 col-lg-6">
       <button mat-flat-button type="submit">Submit</button>
     </div>
