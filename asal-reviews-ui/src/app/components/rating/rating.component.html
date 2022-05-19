@@ -1,0 +1,9 @@
+<button
+  mat-icon-button
+  [color]="color"
+  *ngFor="let number of [0, 1, 2, 3, 4]; index as i"
+>
+  <mat-icon>
+    {{ showIcon(i) }}
+  </mat-icon>
+</button>

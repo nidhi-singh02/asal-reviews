@@ -1,172 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
 import { MatSnackBar } from "@angular/material";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
-
-export interface CityType {
-  code: string;
-  name: string;
-  regionCode: "MH";
-}
-
-export enum StarRatingColor {
-  primary = "primary",
-  accent = "accent",
-  warn = "warn",
-}
-
-export const cityList = [
-  {
-    id: "1",
-    cid: "ca",
-    city: "toronto",
-  },
-  {
-    id: "2",
-    cid: "ca",
-    city: "Vancouver",
-  },
-  {
-    id: "3",
-    cid: "us",
-    city: "New York City",
-  },
-  {
-    id: "4",
-    cid: "us",
-    city: "Los Angeles",
-  },
-  {
-    id: "5",
-    cid: "uk",
-    city: "London",
-  },
-  {
-    id: "6",
-    cid: "uk",
-    city: "BRIGHTON",
-  },
-];
-
-export const productList = [
-  {
-    id: "1",
-    cid: "book",
-    product: "Stay",
-  },
-  {
-    id: "2",
-    cid: "book",
-    product: "Flights",
-  },
-  {
-    id: "3",
-    cid: "book",
-    product: "Hotel",
-  },
-  {
-    id: "4",
-    cid: "book",
-    product: "Car Rental",
-  },
-  {
-    id: "5",
-    cid: "book",
-    product: "Attrraction",
-  },
-  {
-    id: "6",
-    cid: "skyScan",
-    product: "Filtes",
-  },
-  {
-    id: "7",
-    cid: "skyScan",
-    product: "Hotels",
-  },
-  {
-    id: "8",
-    cid: "skyScan",
-    product: "Car Hire",
-  },
-  {
-    id: "9",
-    cid: "exp",
-    product: "Stays",
-  },
-  {
-    id: "10",
-    cid: "exp",
-    product: "Flites",
-  },
-  {
-    id: "11",
-    cid: "exp",
-    product: "Packages",
-  },
-  {
-    id: "12",
-    cid: "exp",
-    product: "Holiday Activities",
-  },
-  {
-    id: "13",
-    cid: "tripAd",
-    product: "Holiday Homes",
-  },
-  {
-    id: "14",
-    cid: "tripAd",
-    product: "Restaurants",
-  },
-  {
-    id: "15",
-    cid: "tripAd",
-    product: "Airlines",
-  },
-  {
-    id: "16",
-    cid: "tripAd",
-    product: "Package Holidays",
-  },
-  {
-    id: "17",
-    cid: "tripAd",
-    product: "Cruises",
-  },
-  {
-    id: "18",
-    cid: "ag",
-    product: "Hotels & Homes",
-  },
-  {
-    id: "19",
-    cid: "ag",
-    product: "Hotels & Homes",
-  },
-  {
-    id: "20",
-    cid: "ag",
-    product: "Flight + Hotel",
-  },
-  {
-    id: "21",
-    cid: "ag",
-    product: "Flights",
-  },
-  {
-    id: "22",
-    cid: "ag",
-    product: "Long stays",
-  },
-];
+import "rxjs/add/operator/filter";
 
 @Component({
   selector: "app-get-review",
@@ -179,94 +16,51 @@ export class GetReviewComponent implements OnInit {
   @Input("color") private color: string = "accent";
   @Output() private ratingUpdated = new EventEmitter();
 
-  private snackBarDuration: number = 2000;
-  private ratingArr = [];
-
-  public writeReview: FormGroup;
   filteredOptions: Observable<string[]>;
 
-  citieS = [
-    {
-      id: "mum",
-      name: "Mumbai",
-    },
-    {
-      id: "pun",
-      name: "Pune",
-    },
-    {
-      id: "thn",
-      name: "Thane",
-    },
-    {
-      id: "nMum",
-      name: "Navi Mumbai",
-    },
-    {
-      id: "kol",
-      name: "Kolhapur",
-    },
-    {
-      id: "pan",
-      name: "Panvel",
-    },
+  reviewData = [
+    // {
+    //   rating: 4,
+    //   serviceprovider: "sdf",
+    //   content: "sdfsefsef",
+    //   product: "sdf",
+    // },
+    // {
+    //   rating: 3,
+    //   serviceprovider: "sdf",
+    //   content: "sdfsefsef",
+    //   product: "sdf",
+    // },
+    // {
+    //   rating: 1,
+    //   serviceprovider: "sdf",
+    //   content: "sdfsefsef",
+    //   product: "sdf",
+    // },
   ];
-
-  serviceProvider = [
-    {
-      id: "book",
-      name: "Booking.com",
-    },
-    {
-      id: "skyScan",
-      name: "Skyscanner",
-    },
-    {
-      id: "exp",
-      name: "Expedia",
-    },
-    {
-      id: "tripAd",
-      name: "TripAdvisor",
-    },
-    {
-      id: "ag",
-      name: "Agoda",
-    },
-  ];
-
-  products = [];
-
-  form = new FormGroup({
-    country: new FormControl(),
-    city: new FormControl(),
-    serviceprovider: new FormControl(),
-    productName: new FormControl(),
-    comment: new FormControl(),
-    placeVisited: new FormControl(),
-  });
+  userID: string;
 
   constructor(
     private asalReviewAPI: AsalReviewAPIService,
-    private fb: FormBuilder,
-    private router: Router,
-    private snackBar: MatSnackBar
-  ) {
-    this.writeReview = this.fb.group({});
-  }
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    console.log("a " + this.starCount);
-    for (let index = 0; index < this.starCount; index++) {
-      this.ratingArr.push(index);
-    }
+    this.route.queryParams
+      .filter((params) => params.order)
+      .subscribe((params) => {
+        console.log(params);
+        this.userID = params.UserId;
+      });
+    this.getUserReviews();
   }
 
   setRating(rating: number) {
     console.log(rating);
     this.rating = rating;
     this.snackBar.open("You rated " + rating + " / " + this.starCount, "", {
-      duration: this.snackBarDuration,
+      duration: 3000,
     });
     this.ratingUpdated.emit(rating);
     return false;
@@ -280,31 +74,20 @@ export class GetReviewComponent implements OnInit {
     }
   }
 
-  checkFirstDropdown($event) {
-    this.products = productList.filter((c) => c.cid === $event);
-    let itm = this.products[0];
-    this.form.controls["productName"].setValue(itm.id);
-    console.log($event);
-  }
-
-  onSubmit() {
-    console.log("form", this.form);
-    if (this.form.invalid) {
-      return;
-    }
-
-    const { city, place, comment } = this.form.value;
-
-    const data = this.form.value;
-    data.rating = this.rating;
-    data.UserId = sessionStorage.getItem("userId");
-    data.content = `${city}\n${place}\n${comment}`;
-    console.log("data", data);
-
+  getUserReviews() {
+    const data = {
+      userID: this.userID || sessionStorage.getItem("userId"),
+    };
     this.asalReviewAPI.getReview(data).subscribe(
       (r) => {
         console.log("r", r);
-        this.snackBar.open(r.message, "", { duration: 3000 });
+        if (r.status === 200) {
+          this.reviewData = r.result;
+          if (!r.result.length)
+            this.snackBar.open("No reviews available", "", { duration: 3000 });
+        } else {
+          this.snackBar.open(r.message, "", { duration: 3000 });
+        }
       },
       (err) => {
         console.log("error", err);

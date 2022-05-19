@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AsalReviewAPIService } from "./services/asal-review-api.service";
 import { $BroadcastManagerService } from "./services/broadcast-manager.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-root",
@@ -11,8 +12,10 @@ import { $BroadcastManagerService } from "./services/broadcast-manager.service";
 export class AppComponent implements OnInit {
   title = "AsalReviews";
   loggedIn = false;
+  activeUrl = "/";
 
   constructor(
+    private location: Location,
     private asalReviewAPI: AsalReviewAPIService,
     private router: Router,
     private broadcast: $BroadcastManagerService
@@ -30,6 +33,9 @@ export class AppComponent implements OnInit {
     if (sessionStorage.getItem("userId")) {
       this.loggedIn = true;
     }
+    this.router.events.subscribe((val) => {
+      this.activeUrl = this.location.path();
+    });
   }
 
   logout() {

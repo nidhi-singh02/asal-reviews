@@ -1,91 +1,85 @@
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<h2>Create a free account</h2>
 
-<div class="container">
-  <form [formGroup]="accountForm" (ngSubmit)="submitForm()">
-    <div class="row">
-      <div class="col">
-        <h2>Create a free account</h2>
-        <a href="#" class="fb btn">
-          <i class="fa fa-facebook fa-fw"></i> Sign Up with Facebook
-        </a>
-        <a href="#" class="twitter btn">
-          <i class="fa fa-twitter fa-fw"></i> Sign Up with Twitter
-        </a>
-        <a href="#" class="google btn"
-          ><i class="fa fa-google fa-fw"> </i> Sign Up with Google+
-        </a>
-      </div>
-    </div>
-
-    <div
-      style="
-        width: 100%;
-        height: 12px;
-        border-bottom: 1px solid black;
-        text-align: center;
-      "
-    >
-      <span style="font-size: 20px; background-color: #f3f5f6; padding: 0 10px">
-        OR
-        <!--Padding is optional-->
-      </span>
-    </div>
-    <div class="row">
-      <div class="col">
-        <input
-          type="text"
-          formControlName="contactNo"
-          placeholder="Contact No"
-          required
-        />
-        <input
-          type="text"
-          formControlName="website"
-          placeholder="Web Site"
-          required
-        />
-        <input
-          type="text"
-          formControlName="firstName"
-          placeholder="First Name"
-          required
-        />
-        <input
-          type="text"
-          formControlName="lastName"
-          placeholder="Last Name"
-          required
-        />
-        <input
-          type="text"
-          formControlName="companyName"
-          placeholder="Company Name"
-          required
-        />
-        <input
-          type="text"
-          formControlName="email"
-          placeholder="Work Email"
-          required
-        />
-
-        <input
-          type="password"
-          formControlName="password"
-          placeholder="Set Password"
-          required
-        />
-        <input
-          type="password"
-          formControlName="confirmPassword"
-          placeholder="Confirm Password"
-          required
-        />
-        <input type="submit" value="Get Started" />
-      </div>
-    </div>
-  </form>
+<div>
+  <a href="#" class="fb btn">
+    <i class="fa fa-facebook fa-fw"></i> Sign Up with Facebook
+  </a>
+  <a href="#" class="twitter btn">
+    <i class="fa fa-twitter fa-fw"></i> Sign Up with Twitter
+  </a>
+  <a href="#" class="google btn"
+    ><i class="fa fa-google fa-fw"> </i> Sign Up with Google+
+  </a>
 </div>
+
+<div
+  class="mt-4 mb-4"
+  style="
+    width: 100%;
+    height: 12px;
+    border-bottom: 1px solid black;
+    text-align: center;
+  "
+>
+  <span style="font-size: 20px; background-color: #f3f5f6; padding: 0 10px">
+    OR
+  </span>
+</div>
+
+<form [formGroup]="accountForm" (ngSubmit)="submitForm()" class="mb-4">
+  <p>All the fields are mandatory</p>
+
+  <input
+    type="text"
+    formControlName="contactNo"
+    placeholder="Contact No"
+    required
+  />
+  <input
+    type="text"
+    formControlName="website"
+    placeholder="Web Site"
+    required
+  />
+  <input
+    type="text"
+    formControlName="firstName"
+    placeholder="First Name"
+    required
+  />
+  <input
+    type="text"
+    formControlName="lastName"
+    placeholder="Last Name"
+    required
+  />
+  <input
+    type="text"
+    formControlName="companyName"
+    placeholder="Company Name"
+    required
+  />
+  <input
+    type="text"
+    formControlName="email"
+    placeholder="Work Email"
+    required
+  />
+
+  <input
+    type="password"
+    formControlName="password"
+    placeholder="Set Password"
+    required
+  />
+  <input
+    type="password"
+    formControlName="confirmPassword"
+    placeholder="Confirm Password"
+    required
+  />
+  <input type="submit" value="Get Started" />
+</form>
 
 <!-- <div id="signup">
   <h1>Sign Up for Free</h1>
