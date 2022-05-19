@@ -36,4 +36,8 @@ export class AsalReviewAPIService {
   public getReview(data): Observable<any> {
     return this.http.post(API_URLS.GET_REVIEW, data);
   }
+
+  public getAllReviews(): Observable<any> {
+    return this.http.get(API_URLS.GET_ALL_REVIEW);
+  }
 }

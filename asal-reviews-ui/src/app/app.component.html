@@ -1,4 +1,4 @@
-<div style="text-align: center">
+<div style="text-align: center; margin-top: 12px">
   <h1>Welcome to {{ title }}!</h1>
 </div>
 
@@ -6,20 +6,6 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
-<!--
-<div class="navbar">
-  <div class="row">
-    <div class="col-md-6 col-sm-6 col-lg-6">
-      <img src="../assets/image/AsalReview.png" height="34" width="138" alt="logo">
-    </div>
-    <div class="col-md-6 col-sm-6 col-lg-6 floatR">
-  <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-  <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
-  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-  <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-</div>
-</div>
-</div> -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
@@ -81,12 +67,14 @@
           </a>
         </ng-container>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/signUp">
-          <i class="fa fa-fw fa-user"></i>
-          Create Account
-        </a>
-      </li>
+      <ng-container *ngIf="!loggedIn">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signUp">
+            <i class="fa fa-fw fa-user"></i>
+            Create Account
+          </a>
+        </li>
+      </ng-container>
     </ul>
 
     <!-- <ul id="nav">
