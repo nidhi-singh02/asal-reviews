@@ -1,75 +1,48 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="row">
-    <div class="col-md-6 col-sm-6 col-lg-6">
-      <label>City</label>
-      <select formControlName="city" class="form-control">
-        <option *ngFor="let city of citieS" [value]="city.id">
-          {{ city.name }}
-        </option>
-      </select>
-
-      <label>Service Provider</label><br />
-      <select
-        formControlName="serviceprovider"
-        class="form-control"
-        (change)="checkFirstDropdown($event.target.value)"
-      >
-        <option *ngFor="let service of serviceProvider" [value]="service.id">
-          {{ service.name }}
-        </option>
-      </select>
-
-      <label>Product List</label><br />
-      <select formControlName="productName" class="form-control">
-        <option *ngFor="let product of products" [value]="product.id">
-          {{ product.product }}
-        </option>
-      </select>
+<div fxLayout="row" fxLayoutGap="12px" [style.margin-top]="'12px'">
+  <mat-card>
+    <div class="">Code compilé</div>
+    <div class="mat-body-1">
+      Le code écrit en TypeScript est compilé en JavaScript avant d'être utilisé
+      : de ce fait, tout code JavaScript valide est du code TypeScript valide.
     </div>
-
-    <div class="col-md-6 col-sm-6 col-lg-6">
-      <label for="FormControlPlace" class="form-label">Place Visited</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="placeVisited"
-        id="FormControlPlace"
-        placeholder="Place Visited"
-      />
-
-      <label for="FormControlComment" class="form-label">Comment</label>
-      <textarea
-        class="form-control"
-        formControlName="comment"
-        id="FormControlComment"
-        rows="3"
-      ></textarea>
-
-      <button
-        mat-icon-button
-        [color]="color"
-        *ngFor="let ratingId of ratingArr; index as i"
-        [id]="'star_' + i"
-        (click)="setRating(i + 1)"
-        matTooltipPosition="above"
-      >
-        <mat-icon>
-          {{ showIcon(i) }}
-        </mat-icon>
-      </button>
-      <mat-error *ngIf="starCount == null || starCount == 0">
-        Star count is <strong>required</strong> and cannot be zero
-      </mat-error>
-      <p class="body-2">
-        You rated <span class="body-2">{{ rating }}</span> /
-        <span class="body-2">{{ starCount }}</span>
-      </p>
+  </mat-card>
+  <mat-card>
+    <div class="mat-body-2">Impératif</div>
+    <div class="mat-body-1">
+      Se rapproche des langages de type impératif, tels que le Java :
+      utilisation de classes, interfaces, héritage ...
     </div>
-  </div>
+  </mat-card>
+  <mat-card>
+    <div class="mat-body-2">Ressources</div>
+    <mat-list>
+      <mat-list-item>
+        <div matLine>
+          Sandbox TypeScript :
+          <button mat-button (click)="playground.click()">Playground</button>
+          <a
+            #playground
+            href="http://www.typescriptlang.org/play/"
+            target="_blank"
+            [style.display]="'none'"
+            >TS Playground</a
+          >
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div matLine>
+          Documentation :
+          <button mat-button (click)="documentation.click()">TS Doc</button>
+          <a
+            #documentation
+            href="http://www.typescriptlang.org/docs/home.html"
+            target="_blank"
+            [style.display]="'none'"
+            >TS Doc</a
+          >
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
 
-  <div class="row">
-    <div class="col-md-6 col-sm-6 col-lg-6">
-      <button mat-flat-button type="submit">Submit</button>
-    </div>
-  </div>
-</form>
