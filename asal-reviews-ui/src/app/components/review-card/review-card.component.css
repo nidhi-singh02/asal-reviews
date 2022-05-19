@@ -1,0 +1,23 @@
+.review-card {
+  width: 24%;
+  min-width: 150px;
+  height: 150px;
+  padding: 12px;
+  background-color: aquamarine;
+  margin-bottom: 16px;
+}
+
+/* .review-card-rating {} */
+.review-card-heading {
+  font-weight: 700;
+}
+
+.review-card-user {
+  color: gray;
+}
+
+.review-card-comment {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: no-wrap;
+}

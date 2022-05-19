@@ -7,6 +7,7 @@ const API_URLS = {
   GET_USER: environment.apiUrl + "/user/getUser/",
   CREATE_REVIEW: environment.apiUrl + "/user/createReview",
   GET_REVIEW: environment.apiUrl + "/user/getReview",
+  GET_ALL_REVIEW: environment.apiUrl + "/user/getAllReview",
   GET_CITY: environment.apiUrl + "/",
 };
 

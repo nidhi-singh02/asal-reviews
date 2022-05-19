@@ -1,0 +1,22 @@
+<div class="card-container">
+  <app-review-card
+    style="display: contents"
+    *ngFor="
+      let review of data.slice(
+        (pageNumber - 1) * pageLimit,
+        pageNumber * pageLimit
+      )
+    "
+    [data]="review"
+  ></app-review-card>
+</div>
+<div class="mt-2">
+  <ng-container *ngIf="this.pageNumber > 1">
+    <button class="btn btn-primary" (click)="onClickPrevious()">
+      Previous
+    </button>
+  </ng-container>
+  <ng-container *ngIf="pageNumber * pageLimit < data.length">
+    <button class="btn btn-primary ml-2" (click)="onClickNext()">Next</button>
+  </ng-container>
+</div>
