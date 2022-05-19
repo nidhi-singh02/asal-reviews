@@ -1,0 +1,2 @@
+Committed chaincode definition for chaincode 'review' on channel 'review':
+Version: 5.0, Sequence: 5, Endorsement Plugin: escc, Validation Plugin: vscc, Approvals: [Org1MSP: true, Org2MSP: true]
