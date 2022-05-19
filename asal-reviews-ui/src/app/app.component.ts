@@ -11,6 +11,7 @@ import { $BroadcastManagerService } from "./services/broadcast-manager.service";
 export class AppComponent implements OnInit {
   title = "AsalReviews";
   loggedIn = false;
+  activeUrl = "/";
 
   constructor(
     private asalReviewAPI: AsalReviewAPIService,
@@ -30,6 +31,9 @@ export class AppComponent implements OnInit {
     if (sessionStorage.getItem("userId")) {
       this.loggedIn = true;
     }
+
+    this.activeUrl = this.router.url;
+    console.log("url", this.router.url);
   }
 
   logout() {
@@ -37,5 +41,9 @@ export class AppComponent implements OnInit {
     this.asalReviewAPI.logout().subscribe(() => {});
     this.router.navigateByUrl("/");
     this.loggedIn = false;
+  }
+
+  setActive(url) {
+    this.activeUrl = url;
   }
 }

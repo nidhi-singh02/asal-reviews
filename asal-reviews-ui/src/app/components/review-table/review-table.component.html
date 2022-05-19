@@ -12,11 +12,11 @@
 </div>
 <div class="mt-2">
   <ng-container *ngIf="this.pageNumber > 1">
-    <button class="btn btn-primary" (click)="onClickPrevious()">
+    <button class="btn btn-primary mr-2" (click)="onClickPrevious()">
       Previous
     </button>
   </ng-container>
   <ng-container *ngIf="pageNumber * pageLimit < data.length">
-    <button class="btn btn-primary ml-2" (click)="onClickNext()">Next</button>
+    <button class="btn btn-primary" (click)="onClickNext()">Next</button>
   </ng-container>
 </div>
