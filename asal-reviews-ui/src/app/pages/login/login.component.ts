@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
 import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
 import { $BroadcastManagerService } from "src/app/services/broadcast-manager.service";
+import { CustomSnackbarService } from "src/app/services/custom-snackbar.service";
 
 @Component({
   selector: "app-login",
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private asalReviewAPI: AsalReviewAPIService,
-    private snackBar: MatSnackBar,
+    private snackBar: CustomSnackbarService,
     private router: Router,
     private eventBroadcastService: $BroadcastManagerService
   ) {}
@@ -41,15 +41,15 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("email", r.user.email);
           this.getUserDetail(r.user.id);
           this.eventBroadcastService.emit({ name: "LOGIN_CHECK" });
-          this.snackBar.open("Login Success", "", { duration: 5000 });
+          this.snackBar.showSuccessMessage("Login Success");
           this.router.navigateByUrl("/");
         } else {
-          this.snackBar.open(r.message, "", { duration: 5000 });
+          this.snackBar.showInfoMessage(r.message);
         }
       },
       (err) => {
         console.log("err", err);
-        this.snackBar.open(err.error.message, "", { duration: 5000 });
+        this.snackBar.showErrorMessage(err.error.message);
       }
     );
   }

@@ -1,14 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
-import { MatSnackBar } from "@angular/material";
-import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Observable } from "rxjs";
 import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
+import { CustomSnackbarService } from "src/app/services/custom-snackbar.service";
 
 export interface CityType {
   code: string;
@@ -245,8 +239,7 @@ export class WriteReviewComponent implements OnInit {
   constructor(
     private asalReviewAPI: AsalReviewAPIService,
     private fb: FormBuilder,
-    private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: CustomSnackbarService
   ) {
     this.writeReview = this.fb.group({});
   }
@@ -274,9 +267,9 @@ export class WriteReviewComponent implements OnInit {
   setRating(rating: number) {
     console.log(rating);
     this.rating = rating;
-    this.snackBar.open("You rated " + rating + " / " + this.starCount, "", {
-      duration: this.snackBarDuration,
-    });
+    this.snackBar.showInfoMessage(
+      "You rated " + rating + " / " + this.starCount
+    );
     this.ratingUpdated.emit(rating);
     return false;
   }
@@ -320,12 +313,12 @@ export class WriteReviewComponent implements OnInit {
     this.asalReviewAPI.createReview(data).subscribe(
       (r) => {
         console.log("r", r);
-        this.snackBar.open(r.message, "", { duration: 3000 });
+        this.snackBar.showSuccessMessage(r.message);
         this.form.reset();
       },
       (err) => {
         console.log("error", err);
-        this.snackBar.open("Error occured", "", { duration: 3000 });
+        this.snackBar.showErrorMessage("Error occured");
       }
     );
   }

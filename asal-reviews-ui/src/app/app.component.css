@@ -22,10 +22,13 @@ nav {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .nav-item {
+  font-weight: 600;
   margin-left: 12px;
+  text-transform: uppercase;
 }
 
 .nav-item.active {
@@ -34,7 +37,14 @@ nav {
 
 
 .nav-item:hover {
-  background: #369;
+  color: white;
+  border-radius: 4px;
+  background: #346799;
+}
+
+.nav-link {
+  color: #333 !important;
+  text-transform: uppercase;
 }
 
 .nav-link:hover {

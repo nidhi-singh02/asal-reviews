@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
-import { MatSnackBar } from "@angular/material";
+import { CustomSnackbarService } from "src/app/services/custom-snackbar.service";
 
 @Component({
   selector: "app-create-account",
@@ -13,7 +13,7 @@ export class CreateAccountComponent implements OnInit {
 
   constructor(
     private asalReviewAPI: AsalReviewAPIService,
-    private snackBar: MatSnackBar
+    private snackBar: CustomSnackbarService
   ) {}
 
   ngOnInit() {
@@ -46,10 +46,15 @@ export class CreateAccountComponent implements OnInit {
     this.asalReviewAPI.createAccount(data).subscribe(
       (r) => {
         console.log("r", r);
-        this.snackBar.open("Account Created Successfully");
+        if (r.status === 200) {
+          this.snackBar.showSuccessMessage("Account Created Successfully");
+        } else {
+          this.snackBar.showInfoMessage(r.message);
+        }
       },
       (err) => {
         console.log("err", err);
+        this.snackBar.showErrorMessage(err.error.message);
       }
     );
   }

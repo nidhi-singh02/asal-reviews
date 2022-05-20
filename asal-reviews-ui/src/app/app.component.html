@@ -9,14 +9,24 @@
       src="../assets/image/AsalReviews_1.png"
       width="160"
     />
-    <a
-      class="navbar-heading"
-      routerLink="/dashboard"
-      style="text-decoration: none"
-    >
-      Welcome to {{ title }}!
-    </a>
+    <span style="display: inline-table">
+      <a
+        class="navbar-heading"
+        routerLink="/dashboard"
+        style="text-decoration: none"
+      >
+        <span>
+          <ng-container *ngIf="loggedIn"> Welcome, {{ userId }} </ng-container>
+          <ng-container *ngIf="!loggedIn">
+            Welcome to AsalReviews
+          </ng-container>
+        </span>
+      </a>
+      <br />
+      <span style="font-size: medium"><i> "Trust More, Buy More" </i> </span>
+    </span>
   </a>
+
   <button
     class="navbar-toggler"
     type="button"
