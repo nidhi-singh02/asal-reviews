@@ -51,6 +51,10 @@ nav {
   color: white !important;
 }
 
+.dropdown-item {
+  font-size: smaller;
+}
+
 
 button {
   background-color: #eee;

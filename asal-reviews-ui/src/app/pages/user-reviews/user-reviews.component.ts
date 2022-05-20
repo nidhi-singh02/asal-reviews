@@ -47,7 +47,7 @@ export class UserReviewsComponent implements OnInit {
 
   getUserReviews() {
     if (!this.userID) {
-      this.snackBar.showErrorMessage("Login to view your reviews");
+      this.snackBar.showInfoMessage("Login to view your reviews");
       return;
     }
     const data = {
