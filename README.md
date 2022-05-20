@@ -20,8 +20,7 @@ This  folder is Customer's interface developed using Angular 6. This consumes RE
 
 ## Demo video
 
-[![Watch the video]()]
-(https://www.youtube.com/watch?v=wRdv_qaQAjQ&ab_channel=NidhiSingh)
+[![Watch the video](https://github.com/nidhi-singh02/asal-reviews/blob/main/asal-reviews-ui/dashboard.png)](https://www.youtube.com/watch?v=wRdv_qaQAjQ&ab_channel=NidhiSingh)
 
 # Prerequisites:
 - **Node.js version 8.9.0+ (but not higher than 9.0)**
