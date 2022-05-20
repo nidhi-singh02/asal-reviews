@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { MatSnackBar } from "@angular/material";
 import { ActivatedRoute } from "@angular/router";
 import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
+import { CustomSnackbarService } from "src/app/services/custom-snackbar.service";
 
 @Component({
   selector: "app-user-reviews",
@@ -33,7 +33,7 @@ export class UserReviewsComponent implements OnInit {
 
   constructor(
     private asalReviewAPI: AsalReviewAPIService,
-    private snackBar: MatSnackBar,
+    private snackBar: CustomSnackbarService,
     private route: ActivatedRoute
   ) {}
 
@@ -46,6 +46,10 @@ export class UserReviewsComponent implements OnInit {
   }
 
   getUserReviews() {
+    if (!this.userID) {
+      this.snackBar.showErrorMessage("Login to view your reviews");
+      return;
+    }
     const data = {
       userID: this.userID,
     };
@@ -55,14 +59,14 @@ export class UserReviewsComponent implements OnInit {
         if (r.status === 200) {
           this.reviewData = r.result;
           if (!r.result.length)
-            this.snackBar.open("No reviews available", "", { duration: 3000 });
+            this.snackBar.showInfoMessage("No reviews available");
         } else {
-          this.snackBar.open(r.message, "", { duration: 3000 });
+          this.snackBar.showInfoMessage(r.message);
         }
       },
       (err) => {
         console.log("error", err);
-        this.snackBar.open("Error occured", "", { duration: 3000 });
+        this.snackBar.showErrorMessage("Error occured");
       }
     );
   }

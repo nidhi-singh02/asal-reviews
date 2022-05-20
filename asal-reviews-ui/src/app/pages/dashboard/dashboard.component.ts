@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { MatSnackBar } from "@angular/material";
 import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
+import { CustomSnackbarService } from "src/app/services/custom-snackbar.service";
 
 @Component({
   selector: "app-dashboard",
@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private asalReviewAPI: AsalReviewAPIService,
-    private snackbar: MatSnackBar
+    private snackbar: CustomSnackbarService
   ) {}
 
   ngOnInit() {
@@ -22,12 +22,12 @@ export class DashboardComponent implements OnInit {
         if (r.status === 200) {
           this.data = r.result;
         } else {
-          this.snackbar.open(r.message, "", { duration: 3000 });
+          this.snackbar.showInfoMessage(r.message);
         }
       },
       (err) => {
         console.log("err", err);
-        this.snackbar.open("Unable to load reviews", "", { duration: 3000 });
+        this.snackbar.showErrorMessage("Unable to load reviews");
       }
     );
   }

@@ -8,6 +8,36 @@ body {
   height: 100%;
 }
 
+:root {
+  /* CSS HEX */
+  --cadet-blue-crayola: #acadbcff;
+  --blue-bell: #9b9eceff;
+  --slate-blue: #6665ddff;
+  --blue-ryb: #473bf0ff;
+  --black: #000500ff;
+}
+
 .form-error {
   color: red;
+}
+
+
+.snackbar-success {
+  background: lightgreen;
+  color: white;
+}
+
+.snackbar-info {
+  background: lightskyblue;
+  color: black;
+}
+
+.snackbar-warn {
+  background: orange;
+  color: white;
+}
+
+.snackbar-error {
+  background: lightcoral;
+  color: white;
 }

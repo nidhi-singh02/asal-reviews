@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { MatSnackBar } from "@angular/material";
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
+import { Router } from "@angular/router";
+import { CustomSnackbarService } from "src/app/services/custom-snackbar.service";
 
 @Component({
   selector: "app-get-review",
@@ -11,13 +10,16 @@ import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
 export class GetReviewComponent implements OnInit {
   reviewData = [];
 
-  constructor(private snackBar: MatSnackBar, private router: Router) {}
+  constructor(
+    private snackBar: CustomSnackbarService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.reviewData = JSON.parse(sessionStorage.getItem("getReview"));
     sessionStorage.removeItem("getReview");
     if (!this.reviewData) {
-      this.snackBar.open("No data available", "", { duration: 3000 });
+      this.snackBar.showInfoMessage("No data available");
       this.router.navigateByUrl("/dashboard");
     }
   }
