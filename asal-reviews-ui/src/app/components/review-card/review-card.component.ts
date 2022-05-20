@@ -7,21 +7,14 @@ import { Router } from "@angular/router";
   styleUrls: ["./review-card.component.css"],
 })
 export class ReviewCardComponent implements OnInit {
-  @Input() data: {
-    rating: string;
-    content: string;
-    productName: string;
-  };
+  @Input() data: any = {};
 
   constructor(private router: Router) {}
 
   ngOnInit() {}
 
-  goToUserReviews(userID) {
-    this.router.navigate(["/getReview"], {
-      queryParams: {
-        userID,
-      },
-    });
+  goToUserReviews() {
+    sessionStorage.setItem("getReview", JSON.stringify(this.data));
+    this.router.navigate(["/getReview"]);
   }
 }

@@ -1,11 +1,11 @@
 <div
   class="review-card"
-  (click)="goToUserReviews(data.UserId)"
+  (click)="goToUserReviews()"
   matTooltip="Check more reviews by this user"
   matTooltipPosition="above"
 >
   <app-rating size="medium" [rating]="data.rating"></app-rating>
-  <div class="review-card-heading">{{ data.productName }}</div>
+  <div class="review-card-heading">{{ data.product }}</div>
   <br />
   &ldquo;
   <span class="review-card-comment">{{ data.content }}</span>

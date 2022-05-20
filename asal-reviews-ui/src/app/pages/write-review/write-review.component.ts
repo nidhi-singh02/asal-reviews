@@ -312,6 +312,7 @@ export class WriteReviewComponent implements OnInit {
       (r) => {
         console.log("r", r);
         this.snackBar.open(r.message, "", { duration: 3000 });
+        this.form.reset();
       },
       (err) => {
         console.log("error", err);
