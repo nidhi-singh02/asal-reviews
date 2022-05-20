@@ -21,6 +21,11 @@ export class DashboardComponent implements OnInit {
         console.log(r);
         if (r.status === 200) {
           this.data = r.result;
+          r.result.forEach((value, index) => {
+            if (value.content.length > 60) {
+              r.result[index].shortDesc = value.content.slice(0, 60) + "...";
+            }
+          });
         } else {
           this.snackbar.showInfoMessage(r.message);
         }

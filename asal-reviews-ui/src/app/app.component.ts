@@ -11,6 +11,7 @@ import { Location } from "@angular/common";
 })
 export class AppComponent implements OnInit {
   userId: string;
+  email: string;
   loggedIn = false;
   activeUrl = "/";
 
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
       if (r.name === "LOGIN_CHECK") {
         if (sessionStorage.getItem("userId")) {
           this.loggedIn = true;
+          this.email = sessionStorage.getItem("email");
         }
       }
     });
@@ -37,6 +39,7 @@ export class AppComponent implements OnInit {
       this.activeUrl = this.location.path();
     });
     this.userId = sessionStorage.getItem("userId");
+    this.email = sessionStorage.getItem("email");
   }
 
   logout() {

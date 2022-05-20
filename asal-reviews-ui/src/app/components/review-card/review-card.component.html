@@ -2,5 +2,7 @@
   <app-rating size="medium" [rating]="data.rating"></app-rating>
   <div class="review-card-heading">{{ data.product }}, {{ data.city }}</div>
   <br />
-  <span class="review-card-comment"> &ldquo;{{ data.content }}&rdquo;</span>
+  <span class="review-card-comment">
+    &ldquo;{{ data.shortDesc || data.content }}&rdquo;</span
+  >
 </div>
