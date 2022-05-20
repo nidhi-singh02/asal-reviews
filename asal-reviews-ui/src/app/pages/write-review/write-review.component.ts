@@ -185,6 +185,9 @@ export class WriteReviewComponent implements OnInit {
   public writeReview: FormGroup;
   filteredOptions: Observable<string[]>;
 
+  selectedCity: string;
+  selectedServiceProvider: string;
+
   cities = [
     {
       id: "mum",
@@ -287,10 +290,14 @@ export class WriteReviewComponent implements OnInit {
   }
 
   checkFirstDropdown($event) {
-    this.products = productList.filter((c) => c.cid === $event);
+    console.log($event);
+    this.products = productList.filter((c) => c.cid === $event.target.value);
     let itm = this.products[0];
     this.form.controls["productType"].setValue(itm.id);
-    console.log($event);
+    const select = $event.target;
+    const text = select.options[select.selectedIndex].text;
+    console.log("d", text);
+    this.selectedServiceProvider = text;
   }
 
   onSubmit() {
@@ -301,10 +308,12 @@ export class WriteReviewComponent implements OnInit {
 
     const { comment } = this.form.value;
 
-    const data = this.form.value;
+    const data = { ...this.form.value };
     data.rating = this.rating;
     data.userID = sessionStorage.getItem("userId");
     data.content = comment;
+    data.city = this.selectedCity;
+    data.serviceprovider = this.selectedServiceProvider;
 
     console.log("data", data);
 
@@ -319,5 +328,12 @@ export class WriteReviewComponent implements OnInit {
         this.snackBar.open("Error occured", "", { duration: 3000 });
       }
     );
+  }
+
+  changeCity($event) {
+    const select = $event.target;
+    const text = select.options[select.selectedIndex].text;
+    console.log("d", text);
+    this.selectedCity = text;
   }
 }

@@ -5,7 +5,12 @@
     <div class="col-md-6 col-sm-6 col-lg-6">
       <div class="form-group">
         <label>City</label>
-        <select formControlName="city" class="form-control" required>
+        <select
+          formControlName="city"
+          class="form-control"
+          (change)="changeCity($event)"
+          required
+        >
           <option *ngFor="let city of cities" [value]="city.id">
             {{ city.name }}
           </option>
@@ -23,7 +28,7 @@
         <select
           formControlName="serviceprovider"
           class="form-control"
-          (change)="checkFirstDropdown($event.target.value)"
+          (change)="checkFirstDropdown($event)"
           required
         >
           <option *ngFor="let service of serviceProvider" [value]="service.id">
