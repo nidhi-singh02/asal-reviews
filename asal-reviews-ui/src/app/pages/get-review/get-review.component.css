@@ -1,13 +1,19 @@
 .review-card-large {
-  padding: 16px;
+  padding: 24px;
   background-color: white;
   width: 100%;
+  color: black;
+  border-radius: 8px;
 }
 
 .review-card-large-city {
   font-size: small;
   font-weight: 600;
   color: gray;
+}
+
+.review-card-large-user {
+  margin-top: 4px;
 }
 
 .review-card-large-content {

@@ -40,4 +40,10 @@ export class AsalReviewAPIService {
   public getAllReviews(): Observable<any> {
     return this.http.get(API_URLS.GET_ALL_REVIEW);
   }
+
+  public upvoteReview(reviewId, userId): Observable<any> {
+    return this.http.get(
+      API_URLS.UPVOTE_REVIEW + "/" + reviewId + "/" + userId
+    );
+  }
 }

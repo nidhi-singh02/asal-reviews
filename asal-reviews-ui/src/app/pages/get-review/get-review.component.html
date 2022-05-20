@@ -1,7 +1,7 @@
 <h2>Review Details</h2>
 
 <div>
-  <div class="review-card-large mb-4">
+  <div class="review-card-large">
     <span class="review-card-large-product"> {{ reviewData.product }}, </span>
     <span class="review-card-large-city">
       {{ reviewData.city }}
@@ -18,31 +18,30 @@
       <b>
         <a
           [routerLink]="['/userReviews']"
-          [queryParams]="{ userID: reviewData.UserId }"
+          [queryParams]="{ userID: reviewData.userID }"
           matTooltip="Check more reviews by this user"
         >
-          {{ reviewData.UserId }}
+          {{ reviewData.userID }}
         </a>
       </b>
       on
       <span class="review-card-large-time">
-        {{ reviewData.createdTs | date: "MMMM d, y" }}
+        {{ reviewData.cts | date: "MMMM d, y" }}
       </span>
     </div>
     <br />
 
-    <p class="review-card-large-content">
+    <p class="review-card-large-content mt-1">
       &ldquo;{{ reviewData.content }}&rdquo;
     </p>
 
-    <div class="mt-1">
-      <button mat-stroked-button color="primary">
-        Like
+    <div class="mt-4">
+      <button mat-raised-button (click)="upvoteReview(reviewData.reviewID)">
         <span>
+          {{ reviewData.upvotes }} Upvotes
           <mat-icon style="font-size: smaller">thumb_up</mat-icon>
         </span>
       </button>
-      <span style="color: gray"> {{ reviewData.upvotes }} upvotes </span>
     </div>
   </div>
 </div>

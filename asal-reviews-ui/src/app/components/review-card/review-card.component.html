@@ -1,8 +1,6 @@
 <div class="review-card" (click)="goToUserReviews()">
   <app-rating size="medium" [rating]="data.rating"></app-rating>
-  <div class="review-card-heading">{{ data.product }}</div>
+  <div class="review-card-heading">{{ data.product }}, {{ data.city }}</div>
   <br />
-  &ldquo;
-  <span class="review-card-comment">{{ data.content }}</span>
-  &rdquo;
+  <span class="review-card-comment"> &ldquo;{{ data.content }}&rdquo;</span>
 </div>

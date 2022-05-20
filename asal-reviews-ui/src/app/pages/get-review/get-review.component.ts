@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { AsalReviewAPIService } from "src/app/services/asal-review-api.service";
 import { CustomSnackbarService } from "src/app/services/custom-snackbar.service";
 
 @Component({
@@ -12,6 +13,7 @@ export class GetReviewComponent implements OnInit {
 
   constructor(
     private snackBar: CustomSnackbarService,
+    private asalReviewAPI: AsalReviewAPIService,
     private router: Router
   ) {}
 
@@ -22,5 +24,22 @@ export class GetReviewComponent implements OnInit {
       this.snackBar.showInfoMessage("No data available");
       this.router.navigateByUrl("/dashboard");
     }
+  }
+
+  upvoteReview(reviewId) {
+    const loggedInUserId = sessionStorage.getItem("userId");
+    if (!loggedInUserId) {
+      this.snackBar.showInfoMessage("Please login to upvote");
+      return;
+    }
+    this.asalReviewAPI.upvoteReview(reviewId, loggedInUserId).subscribe(
+      (r) => {
+        this.reviewData = r.result;
+      },
+      (err) => {
+        console.log("err", err);
+        this.snackBar.showErrorMessage(err.error.message);
+      }
+    );
   }
 }

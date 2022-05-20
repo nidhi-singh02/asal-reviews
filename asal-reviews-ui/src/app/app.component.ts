@@ -10,7 +10,7 @@ import { Location } from "@angular/common";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  title = "AsalReviews";
+  userId: string;
   loggedIn = false;
   activeUrl = "/";
 
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((val) => {
       this.activeUrl = this.location.path();
     });
+    this.userId = sessionStorage.getItem("userId");
   }
 
   logout() {

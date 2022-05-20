@@ -4,9 +4,7 @@
 
 <div>
   <div *ngFor="let review of reviewData" class="review-card-large mb-4">
-    <span class="review-card-large-product">
-      {{ review.product }}
-    </span>
+    <span class="review-card-large-product"> {{ review.product }}, </span>
     <span class="review-card-large-city">
       {{ review.city }}
     </span>
@@ -28,13 +26,12 @@
     <p class="review-card-large-content">&ldquo;{{ review.content }}&rdquo;</p>
 
     <div class="mt-1">
-      <button mat-stroked-button color="primary">
-        Like
+      <button mat-raised-button (click)="upvoteReview(review.reviewID)">
         <span>
+          {{ review.upvotes }} Upvotes
           <mat-icon style="font-size: smaller">thumb_up</mat-icon>
         </span>
       </button>
-      <span style="color: gray"> {{ review.upvotes }} upvotes </span>
     </div>
   </div>
 </div>

@@ -9,6 +9,7 @@ const API_URLS = {
   GET_REVIEW: environment.apiUrl + "/user/getReview",
   GET_ALL_REVIEW: environment.apiUrl + "/user/getAllReview",
   GET_CITY: environment.apiUrl + "/",
+  UPVOTE_REVIEW: environment.apiUrl + "/user/upvote",
 };
 
 export default API_URLS;

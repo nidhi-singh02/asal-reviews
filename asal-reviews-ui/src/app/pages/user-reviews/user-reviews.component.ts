@@ -70,4 +70,32 @@ export class UserReviewsComponent implements OnInit {
       }
     );
   }
+
+  upvoteReview(reviewId) {
+    const loggedInUserId = sessionStorage.getItem("userId");
+    if (!loggedInUserId) {
+      this.snackBar.showInfoMessage("Please login to upvote");
+      return;
+    }
+    this.asalReviewAPI.upvoteReview(reviewId, loggedInUserId).subscribe(
+      (r) => {
+        if (r.status === 200) {
+          let index = -1;
+          this.reviewData.some((val, ind) => {
+            if (val.reviewID === r.result.reviewID) {
+              index = ind;
+              return true;
+            }
+          });
+          this.reviewData[index] = r.result;
+        } else {
+          this.snackBar.showSuccessMessage(r.message);
+        }
+      },
+      (err) => {
+        console.log("err", err);
+        this.snackBar.showErrorMessage(err.error.message);
+      }
+    );
+  }
 }

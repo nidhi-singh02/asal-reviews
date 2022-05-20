@@ -67,7 +67,7 @@
       <label class="body-2">Rating:</label>
       <button
         mat-icon-button
-        [color]="color"
+        color="primary"
         *ngFor="let ratingId of ratingArr; index as i"
         [id]="'star_' + i"
         (click)="setRating(i + 1)"
@@ -90,7 +90,7 @@
           class="form-control"
           formControlName="product"
           id="FormControlServiceAvailed"
-          placeholder="Service Availed"
+          placeholder="e.g. ABC Hotel, XYZ Flight"
           required
         />
         <small
