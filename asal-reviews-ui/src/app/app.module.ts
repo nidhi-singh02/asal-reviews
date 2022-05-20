@@ -20,6 +20,7 @@ import { ReviewCardComponent } from './components/review-card/review-card.compon
 import { ReviewTableComponent } from './components/review-table/review-table.component';
 import { WhyAsalComponent } from './pages/why-asal/why-asal.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { UserReviewsComponent } from './pages/user-reviews/user-reviews.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { RatingComponent } from './components/rating/rating.component';
     ReviewTableComponent,
     WhyAsalComponent,
     RatingComponent,
+    UserReviewsComponent,
   ],
   imports: [
     BrowserModule,
