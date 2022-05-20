@@ -7,21 +7,21 @@ We have three folders for three different layers
 ### Network
 This folder contains all Hyperledger Fabric related cryptographic material, channel artifacts, genesis block,chaincode and docker-compose YAML files.
 
-### WebServer
+### asal-reviews-api
 This folder is a Web server based on Node.js and Express.js framework. It facilitates following things -
 
 - Acts like a Web server that wraps all the Fabric interaction logic as REST API (GET, POST endpoints).<br />
 - Acts as client for Fabric network by using Fabric-Client NODE SDK <br />
 - Bridge between an user interface layer and fabric network layer.
 
-### FrontEnd
+### asal-reviews-ui
 This  folder is Customer's interface developed using Angular 6. This consumes REST API to contact with Web server.
 
 
 ## Demo video
 
 [![Watch the video]()]
-(link)
+(https://www.youtube.com/watch?v=wRdv_qaQAjQ&ab_channel=NidhiSingh)
 
 # Prerequisites:
 - **Node.js version 8.9.0+ (but not higher than 9.0)**
@@ -54,7 +54,7 @@ cd network/fabric-network
 ``` bash
 ./network.sh up createChannel -c review -ca -s couchdb
 
-./network.sh deployCC -ccn review -ccp ../chaincode/ -ccl go -c review -ccv 5.0 -ccs 5
+./network.sh deployCC -ccn review -ccp ../chaincode/ -ccl go -c review -ccv 1.0 -ccs 1
 
 ```
 couchDB is running on port 7984 and 8984
@@ -63,7 +63,7 @@ couchDB is running on port 7984 and 8984
 ## Starting the node app + SDK
 Make sure you are in the WebServer directory
 ``` bash
-cd ../WebServer
+cd ../asal-reviews-api
 ```
 ### Install the node modules
 **Note: I am using node version 8.17.0 with npm version 6.13.4** 
@@ -86,7 +86,7 @@ nodemon app.js
 **Start the Angular app**
 Make sure you are in the FrontEnd directory
 ``` bash
-cd ../FrontEnd
+cd ../asal-reviews-ui
 ```
 ### Install the node modules
 ``` bash
@@ -98,4 +98,4 @@ ng serve
 ```
 **The server will started on port 4200 (localhost:4200)**
 
-**Login as "customer"**
+**Login as "customer" or as "guest" (no login needed)**
